@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Göz Hastalığı Tespiti</title>
+    <style>
+        body {
+            background-color: #121212; /* Siyah arka plan */
+            color: white; /* Beyaz yazı rengi */
+            font-family: 'Arial', sans-serif; /* Yazı fontu */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-top: 50px;
+        }
+
+        form {
+            margin-top: 30px;
+        }
+
+        label {
+            font-size: 18px;
+        }
+
+        input[type="file"] {
+            margin: 20px 0;
+            padding: 10px;
+            border: none;
+            background-color: #444;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #008CBA; /* Buton rengi */
+            color: white;
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #005f73; /* Hover efekti */
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-size: 24px;
+        }
+
+        /* Sayfa ortalama */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Göz Hastalığı Tespiti</h1>
+        <form action="/predict" method="POST" enctype="multipart/form-data">
+            <label for="file">Fotoğraf Yükleyin:</label><br>
+            <input type="file" name="file" required><br><br>
+            <button type="submit">Tahmin Et</button>
+        </form>
+
+        {% if prediction_text %}
+            <h2>{{ prediction_text }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
